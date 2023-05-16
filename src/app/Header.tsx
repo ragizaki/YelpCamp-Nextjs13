@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <nav className="z-10 w-full items-center justify-between text-sm lg:flex">
       <div className="flex space-x-5">
-        <p>Browse Camps</p>
+        <Link href="/">Browse Camps</Link>
         {status === "authenticated" && <Link href="/create">Create Camp</Link>}
       </div>
       {status === "authenticated" ? (
