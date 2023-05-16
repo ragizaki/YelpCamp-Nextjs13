@@ -1,6 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "YelpCamp - Create Campsite",
+  description: "Create a new campsite with YelpCamp!",
+};
 
 export default function CreateCampsite() {
   const [formData, setFormData] = useState({
