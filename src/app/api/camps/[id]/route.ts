@@ -11,6 +11,13 @@ export async function GET(
       where: {
         id,
       },
+      include: {
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
     });
     if (!camp) {
       return NextResponse.json({ error: "Camp not found" }, { status: 404 });

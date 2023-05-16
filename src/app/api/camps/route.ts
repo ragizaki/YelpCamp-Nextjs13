@@ -5,7 +5,15 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const camps = await prisma.campsite.findMany({});
+    const camps = await prisma.campsite.findMany({
+      include: {
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
     return NextResponse.json(camps, { status: 200 });
   } catch (error) {
     return NextResponse.json(error, { status: 500 });
