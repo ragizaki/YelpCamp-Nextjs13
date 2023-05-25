@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { type Metadata } from "next";
+import ImageUpload from "./ImageUpload";
+import Input from "./Input";
 
 export const metadata: Metadata = {
   title: "YelpCamp - Create Campsite",
@@ -15,6 +17,7 @@ export default function CreateCampsite() {
     city: "",
     country: "",
     price: 0,
+    photo: "",
   });
 
   const createCampsite = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,42 +36,67 @@ export default function CreateCampsite() {
       city: "",
       country: "",
       price: 0,
+      photo: "",
     });
   };
 
   return (
-    <form className="flex flex-col space-y-4" onSubmit={createCampsite}>
-      <input
-        placeholder="Name"
+    <form
+      className="flex flex-col space-y-5 max-w-3xl m-auto"
+      onSubmit={createCampsite}
+    >
+      <Input
+        id="name"
+        label="Name"
+        placeholder="Windsor Place"
         value={formData.name}
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
       />
-      <input
-        placeholder="Description"
+      <Input
+        id="description"
+        label="Description"
+        placeholder="A campsite in the woods with a 10km hike"
         value={formData.description}
-        onChange={(e) =>
-          setFormData({ ...formData, description: e.target.value })
-        }
+        onChange={(e) => {
+          setFormData({ ...formData, description: e.target.value });
+        }}
       />
-      <input
-        placeholder="City"
+      <Input
+        id="city"
+        label="city"
+        placeholder="Windsor"
         value={formData.city}
         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
       />
-      <input
-        placeholder="Country"
+      <Input
+        id="country"
+        label="Country"
+        placeholder="Canada"
         value={formData.country}
         onChange={(e) => setFormData({ ...formData, country: e.target.value })}
       />
-      <input
+      <Input
+        id="price"
+        label="Price"
         type="number"
+        pattern="[0-9]*"
         placeholder="Price/night"
         value={formData.price}
-        onChange={(e) =>
-          setFormData({ ...formData, price: e.target.valueAsNumber })
-        }
+        onChange={(e) => {
+          setFormData({
+            ...formData,
+            price: e.target.validity.valid ? parseInt(e.target.value) : 0,
+          });
+        }}
       />
-      <button type="submit">Create Campsite</button>
+      <ImageUpload setPhoto={setFormData} />
+      <button
+        type="submit"
+        className="px-4 py-2 text-white font-medium leading-6 bg-blue-600 border border-blue-700 rounded-md shadow-sm hover:bg-blue-700 disabled:opacity-50"
+        disabled={Object.values(formData).some((item) => !!!item)}
+      >
+        Create Campsite
+      </button>
     </form>
   );
 }
