@@ -17,6 +17,7 @@ model Campsite {
   city        String
   country     String
   price       Float
+  photo       String
   authorId    String
   author      User   @relation(fields: [authorId], references: [id])
 }
