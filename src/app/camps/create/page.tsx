@@ -42,7 +42,7 @@ export default function CreateCampsite() {
 
   return (
     <form
-      className="flex flex-col space-y-5 max-w-3xl m-auto"
+      className="flex flex-col space-y-5 max-w-3xl m-auto md:border-2 md:rounded-lg p-6"
       onSubmit={createCampsite}
     >
       <Input
@@ -92,7 +92,7 @@ export default function CreateCampsite() {
       <ImageUpload setPhoto={setFormData} />
       <button
         type="submit"
-        className="px-4 py-2 text-white font-medium leading-6 bg-blue-600 border border-blue-700 rounded-md shadow-sm hover:bg-blue-700 disabled:opacity-50"
+        className="px-4 py-2 text-white font-medium leading-6 bg-blue-600 border border-blue-700 rounded-md shadow-sm hover:bg-blue-700 disabled:opacity-50 w-full"
         disabled={Object.values(formData).some((item) => !!!item)}
       >
         Create Campsite

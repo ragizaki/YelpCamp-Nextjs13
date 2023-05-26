@@ -38,7 +38,6 @@ const ImageUpload = ({ setPhoto }: Props) => {
             ...prevFormData,
             photo: file[0].fileUrl.replace("raw", "thumbnail"),
           }));
-          console.log(file[0]);
         }
       }}
       width="670px"

@@ -6,7 +6,6 @@ interface Props {
   id: string;
   label: string;
   pattern?: string;
-  halfWidth: boolean;
 }
 
 export default function Input({
@@ -19,15 +18,15 @@ export default function Input({
   pattern,
 }: Props) {
   return (
-    <div className="w-full px-3">
+    <div className="w-full">
       <label
-        className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        className="block uppercase tracking-wide text-gray-800 text-xs font-bold mb-2"
         htmlFor={id}
       >
         {label}
       </label>
       <input
-        className="appearance-none block w-full text-gray-700 border focus:border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+        className="appearance-none block w-full text-gray-800 placeholder:text-gray-400 border-2 border-blue-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
         id={id}
         type={type}
         placeholder={placeholder}
