@@ -1,6 +1,8 @@
 import { type Campsite } from "@prisma/client";
 import { notFound } from "next/navigation";
 import { type Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 interface IParams {
   params: {
@@ -26,5 +28,9 @@ export default async function CampPage({ params }: IParams) {
     return notFound();
   }
 
-  return <div>{camp.name}</div>;
+  return (
+    <div>
+      <p>{camp.name}</p>
+    </div>
+  );
 }
