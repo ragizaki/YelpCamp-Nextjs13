@@ -8,29 +8,42 @@ interface Props {
 
 export default function Camp({ camp }: Props) {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
-      <Image
-        className="w-full"
-        src={camp.photo}
-        alt="Sunset in the mountains"
-      />
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{camp.name}</div>
-        <p className="text-gray-700 text-base">{camp.description}</p>
+    <div className="max-w-sm rounded-lg overflow-hidden">
+      <div className="w-full aspect-square relative">
+        <Image
+          className="w-full rounded-lg"
+          src={camp.photo}
+          fill={true}
+          alt="Sunset in the mountains"
+        />
       </div>
-      <div className="px-6 pt-4 pb-2">
-        <Link
-          href={`/camps/${camp.id}`}
-          className="inline-block bg-gray-200 hover:bg-gray-300 transition ease-in rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-        >
-          View More
-        </Link>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #travel
-        </span>
-        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          #winter
-        </span>
+      <div className="flex flex-col space-y-2 mt-2 py-2 px-3">
+        <p className="font-bold text-xl">{camp.name}</p>
+        <div className="flex items-center text-gray-700 text-base">
+          <svg
+            className="w-5 h-5 mr-1"
+            fill="#000000"
+            width="800px"
+            height="800px"
+            viewBox="0 0 32 32"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M16.114-0.011c-6.559 0-12.114 5.587-12.114 12.204 0 6.93 6.439 14.017 10.77 18.998 0.017 0.020 0.717 0.797 1.579 0.797h0.076c0.863 0 1.558-0.777 1.575-0.797 4.064-4.672 10-12.377 10-18.998 0-6.618-4.333-12.204-11.886-12.204zM16.515 29.849c-0.035 0.035-0.086 0.074-0.131 0.107-0.046-0.032-0.096-0.072-0.133-0.107l-0.523-0.602c-4.106-4.71-9.729-11.161-9.729-17.055 0-5.532 4.632-10.205 10.114-10.205 6.829 0 9.886 5.125 9.886 10.205 0 4.474-3.192 10.416-9.485 17.657zM16.035 6.044c-3.313 0-6 2.686-6 6s2.687 6 6 6 6-2.687 6-6-2.686-6-6-6zM16.035 16.044c-2.206 0-4.046-1.838-4.046-4.044s1.794-4 4-4c2.207 0 4 1.794 4 4 0.001 2.206-1.747 4.044-3.954 4.044z"></path>
+          </svg>
+          {`${camp.city}, ${camp.country}`}
+        </div>
+        <div className="flex items-center justify-between">
+          <p>
+            <strong>${camp.price} CAD</strong> night
+          </p>
+          <Link
+            href={`/camps/${camp.id}`}
+            className="inline-block bg-gray-200 hover:bg-gray-300 transition ease-in rounded-full px-3 py-1 text-sm font-semibold text-gray-700 w-fit"
+          >
+            View More
+          </Link>
+        </div>
       </div>
     </div>
   );
