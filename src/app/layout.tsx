@@ -19,9 +19,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <main className="min-h-screen w-full p-20">
+          <main className="min-h-screen w-full dark:bg-gray-800">
             <Header />
-            {children}
+            <div className="max-w-screen-2xl mx-auto p-5 lg:py-8">
+              {children}
+            </div>
           </main>
         </NextAuthProvider>
       </body>
