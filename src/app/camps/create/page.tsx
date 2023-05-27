@@ -4,6 +4,7 @@ import { useState } from "react";
 import { type Metadata } from "next";
 import ImageUpload from "./ImageUpload";
 import Input from "./Input";
+import { useRouter } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "YelpCamp - Create Campsite",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function CreateCampsite() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -38,6 +40,7 @@ export default function CreateCampsite() {
       price: 0,
       photo: "",
     });
+    router.push(`/camps/${data.id}`);
   };
 
   return (

@@ -1,8 +1,6 @@
 import { type Campsite } from "@prisma/client";
 import { notFound } from "next/navigation";
 import { type Metadata } from "next";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 interface IParams {
   params: {
@@ -23,6 +21,7 @@ export async function generateMetadata({ params }: IParams): Promise<Metadata> {
 export default async function CampPage({ params }: IParams) {
   const res = await fetch(`http://localhost:3000/api/camps/${params.id}`);
   const camp: Campsite = await res.json();
+  console.log("THE JSON HAS BEEN HIT");
 
   if (!camp) {
     return notFound();
