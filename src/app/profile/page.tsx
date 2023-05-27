@@ -1,4 +1,4 @@
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import prisma from "@/lib/prisma";
@@ -31,7 +31,12 @@ export default async function Profile() {
   return (
     <div>
       {camps.map((camp) => (
-        <div key={camp.id}>{camp.name}</div>
+        <div key={camp.id}>
+          <p>{camp.name}</p>
+          <button className="px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-red-600 border border-red-700 rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            Delete
+          </button>
+        </div>
       ))}
     </div>
   );
