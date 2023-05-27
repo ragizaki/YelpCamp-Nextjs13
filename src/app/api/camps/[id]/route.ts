@@ -9,7 +9,7 @@ interface RouteConfig {
   };
 }
 
-export async function GET({ params }: RouteConfig) {
+export async function GET(req: Request, { params }: RouteConfig) {
   const { id } = params;
   try {
     const camp = await prisma.campsite.findUnique({
@@ -33,7 +33,7 @@ export async function GET({ params }: RouteConfig) {
   }
 }
 
-export async function DELETE({ params }: RouteConfig) {
+export async function DELETE(req: Request, { params }: RouteConfig) {
   const { id } = params;
   try {
     const session = await getServerSession(authOptions);
